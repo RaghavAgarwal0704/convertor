@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Convert</title>
+	<link href="https://fonts.googleapis.com/css?family=Hepta+Slab&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Manjari&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+	
+	<style>body
+{
+	margin:0;
+	width:100%;
+}
+html
+{
+	height:100%;
+	background-size:cover;
+	width:auto;
+}
+header
+{
+	margin:0;
+	position:absolute;
+	top:0;
+	width:100%;
+	height:12%;
+	background:#4CAF50;
+	text-align:center;
+	box-shadow:2px 2px 20px white;
+	z-index:1;
+}
+h1
+{
+	color:white;
+	font-family: 'Hepta Slab', serif;
+	letter-spacing:0.08em;
+}
+.foot
+{
+	margin:0;
+	position:absolute;
+	bottom:0;
+	width:100%;
+	height:6%;
+	background:rgba(33,33,33,1);
+	color:white;
+	font-weight:100;
+	text-align:center;
+}
+.menu
+{
+	position:absolute;
+	left:0;
+	margin:0;
+	width:20%;
+	height:82%;
+	top:12%;
+	padding:0;
+	z-index:0;
+}
+#menu
+{
+	margin:0;
+	list-style-type:none;
+	position:absolute;
+	width:100%;
+	height:100%;
+	left:0;
+	padding:0;
+}
+.but
+{
+	margin:0;
+	width:100%;
+	border:none;
+	padding:11.83%;
+	font-size:150%;
+	background:rgba(150,150,150,1);
+	color:white;
+	font-family: 'Hepta Slab', serif;
+	outline:none;
+	transition:0.3s;
+}
+.but:hover
+{
+	background:rgba(100,100,100,1);
+}
+.calculation
+{
+	position:absolute;
+	width:80%;
+	height:82%;
+	top:12%;
+	left:20%;
+	margin:0;
+}
+.main
+{
+	position:absolute;
+	width:60%;
+	height:50%;
+	left:20%;
+	right:20%;
+	top:20%;
+	border:2px solid gray;
+	border-radius:15px;
+}
+.left
+{
+	position: absolute;
+	left:10%;
+	top:25%;
+}
+.right
+{
+	position:absolute;
+	right:10%;
+	top:25%;
+}
+input
+{
+	border: 1px solid #ccc;
+  	border-radius: 4px;
+  	box-sizing: border-box;
+  	padding:10px 4px;
+  	font-size:20px;
+ 	font-family: 'Manjari', serif;
+  	letter-spacing:0.04em;
+  	outline-color:#4CAF50;
+}
+select
+{
+	margin-top: 10%;
+	background-color: #4CAF50;
+	color:white;			
+    letter-spacing:0.04em;
+    padding: 10px;
+    font-size:20px;
+    border-radius: 6px;
+    font-family: 'Manjari', serif;
+    outline:none;
+    cursor:pointer;
+    /*text-align:center;*/
+}
+select:hover
+{
+	opacity:0.9;
+}
+option
+{
+	background:white;
+	color:#4CAF50;
+}
+.weight
+{
+	display:inline-block;
+}
+.length
+{
+	display:none;
+}
+.temperature
+{
+	display:none;
+}
+.currency
+{
+	display:none;
+}
+.volume
+{
+	display:none;
+}
+.area
+{
+	display:none;
+}</style>
+</head>
+<body>
+	<header><h1>Convertometer</h1></header>
+	<footer class="foot">This site is created and maintained by Raghav  Agarwal<br>&copyRights Reserved</footer>
+	<div class="menu">
+		<ul id="menu">
+			<li><button class="but" onclick="callWeight()">Weight</button></li>
+			<li><button class="but" onclick="callLength()">Length</button></li>
+			<li><button class="but" onclick="callTemperature()">Temperature</button></li>
+			<li><button class="but" onclick="callCurrency()">Currency</button></li>
+			<li><button class="but" onclick="callVolume()">Volume</button></li>
+			<li><button class="but" onclick="callArea()">Area</button></li>
+		</ul>
+	</div>
+	<div class="calculation">
+		<div class="main">
+			<div class="weight">
+				<div class="left">
+						<input type="number" id="inputLeftWeight" placeholder="enter weight" onkeyup="callFromLeftWeight()" onchange="callFromLeftWeight()"><br>
+						<select id="chooseUnitLeftWeight" onchange="callFromLeftWeight()">
+							<option value="kilogram">kilogram</option>
+							<option value="gram">gram</option>
+							<option value="ounce">ounce</option>
+							<option value="pound">pound</option>
+							<option value="ton">ton</option>
+							<option value="quintal">quintal</option>
+						</select>
+				</div>
+				<div class="right">
+						<input type="number"id="inputRightWeight" placeholder="enter weight" onkeyup="callFromRightWeight()" onchange="callFromRightWeight()"><br>
+						<select id="chooseUnitRightWeight" onchange="callFromRightWeight()">
+							<option value="kilogram">kilogram</option>
+							<option value="gram">gram</option>
+							<option value="ounce">ounce</option>
+							<option value="pound">pound</option>
+							<option value="ton">ton</option>
+							<option value="quintal">quintal</option>
+						</select>
+				</div>
+			</div>
+			<div class="length">
+				<div class="left">
+						<input type="number" id="inputLeftLength" placeholder="enter length" onkeyup="callFromLeftLength()" onchange="callFromLeftLength()"><br>
+						<select id="chooseUnitLeftLength" onchange="callFromLeftLength()">
+							<option value="meter">meter</option>
+							<option value="kilometer">kilometer</option>
+							<option value="mile">mile</option>
+							<option value="feet">feet</option>
+							<option value="inch">inch</option>
+							<option value="yard">yard</option>
+						</select>
+				</div>
+				<div class="right">
+					<input type="number" id="inputRightLength" placeholder="enter length" onkeyup="callFromRightLength()" onchange="callFromRightLength()"><br>
+						<select id="chooseUnitRightLength" onchange="callFromRightLength()">
+							<option value="meter">meter</option>
+							<option value="kilometer">kilometer</option>
+							<option value="mile">mile</option>
+							<option value="feet">feet</option>
+							<option value="inch">inch</option>
+							<option value="yard">yard</option>
+						</select>
+				</div>
+			</div>
+			<div class="temperature">
+				<div class="left">
+						<input type="number" id="inputLeftTemperature" placeholder="enter temperature" onkeyup="callFromLeftTemperature()" onchange="callFromLeftTemperature()"><br>
+						<select id="chooseUnitLeftTemperature" onchange="callFromLeftTemperature()">
+							<option value="celcius">celcius</option>
+							<option value="fahrenheit">fahrenheit</option>
+							<option value="kelvin">kelvin</option>
+						</select>
+				</div>
+				<div class="right">
+					<input type="number" id="inputRightTemperature" placeholder="enter temperature" onkeyup="callFromRightTemperature()" onchange="callFromRightTemperature()"><br>
+						<select id="chooseUnitRightTemperature" onchange="callFromRightTemperature()">
+							<option value="celcius">celcius</option>
+							<option value="fahrenheit">fahrenheit</option>
+							<option value="kelvin">kelvin</option>
+						</select>
+				</div>
+			</div>
+			<div class="currency">
+				<div class="left">
+						<input type="number" id="inputLeftCurrency" placeholder="enter currency" onkeyup="callFromLeftCurrency()" onchange="callFromLeftCurrency()"><br>
+						<select id="chooseUnitLeftCurrency" onchange="callFromLeftCurrency()">
+							<option value="rupee">rupee</option>
+							<option value="usd">US dollar</option>
+							<option value="pound">pound</option>
+							<option value="euro">euro</option>
+							<option value="yen">yen</option>
+							<option value="riyal">riyal</option>
+						</select>
+				</div>
+				<div class="right">
+					<input type="number" id="inputRightCurrency" placeholder="enter currency" onkeyup="callFromRightCurrency()" onchange="callFromRightCurrency()"><br>
+						<select id="chooseUnitRightCurrency" onchange="callFromRightCurrency()">
+							<option value="rupee">rupee</option>
+							<option value="usd">US dollar</option>
+							<option value="pound">pound</option>
+							<option value="euro">euro</option>
+							<option value="yen">yen</option>
+							<option value="riyal">riyal</option>
+						</select>
+				</div>
+			</div>
+			<div class="volume">
+				<div class="left">
+						<input type="number" id="inputLeftVolume" placeholder="enter volume" onkeyup="callFromLeftVolume()" onchange="callFromLeftVolume()"><br>
+						<select id="chooseUnitLeftVolume" onchange="callFromLeftVolume()">
+							<option value="litre">litre</option>
+							<option value="cubicfeet">cubic feet</option>
+							<option value="cubicmeter">cubic meter</option>
+							<option value="gallon">gallon</option>
+							<option value="barrel">barrel</option>
+							<option value="pint">pint</option>
+						</select>
+				</div>
+				<div class="right">
+					<input type="number" id="inputRightVolume" placeholder="enter volume" onkeyup="callFromRightVolume()" onchange="callFromRightVolume()"><br>
+						<select id="chooseUnitRightVolume" onchange="callFromRightVolume()">
+							<option value="litre">litre</option>
+							<option value="cubicfeet">cubic feet</option>
+							<option value="cubicmeter">cubic meter</option>
+							<option value="gallon">gallon</option>
+							<option value="barrel">barrel</option>
+							<option value="pint">pint</option>
+						</select>
+				</div>
+			</div>
+			<div class="area">
+				<div class="left">
+						<input type="number" id="inputLeftArea" placeholder="enter area" onkeyup="callFromLeftArea()" onchange="callFromLeftArea()"><br>
+						<select id="chooseUnitLeftArea" onchange="callFromLeftArea()">
+							<option value="sqmeter">square meter</option>
+							<option value="sqkilometer">square kilometer</option>
+							<option value="acre">acre</option>
+							<option value="hectare">hectare</option>
+							<option value="sqyard">square yard</option>
+							<option value="sqfeet">square feet</option>
+						</select>
+				</div>
+				<div class="right">
+					<input type="number" id="inputRightArea" placeholder="enter area" onkeyup="callFromRightArea()" onchange="callFromRightArea()"><br>
+						<select id="chooseUnitRightArea" onchange="callFromRightArea()">
+							<option value="sqmeter">square meter</option>
+							<option value="sqkilometer">square kilometer</option>
+							<option value="acre">acre</option>
+							<option value="hectare">hectare</option>
+							<option value="sqyard">square yard</option>
+							<option value="sqfeet">square feet</option>
+						</select>
+				</div>
+			</div>
+		</div>
+	</div>
+	<h2 style="color:white" id="h"></h2>
+    <script >
+function callWeight()
+{
+	document.querySelector(".weight").style.display="inline-block";
+	document.querySelector(".length").style.display="none";
+	document.querySelector(".temperature").style.display="none";
+	document.querySelector(".currency").style.display="none";
+	document.querySelector(".volume").style.display="none";
+	document.querySelector(".area").style.display="none";
+}
+function callLength()
+{
+	document.querySelector(".weight").style.display="none";
+	document.querySelector(".length").style.display="inline-block";
+	document.querySelector(".temperature").style.display="none";
+	document.querySelector(".currency").style.display="none";
+	document.querySelector(".volume").style.display="none";
+	document.querySelector(".area").style.display="none";
+}
+function callTemperature()
+{
+	document.querySelector(".weight").style.display="none";
+	document.querySelector(".length").style.display="none";
+	document.querySelector(".temperature").style.display="inline-block";
+	document.querySelector(".currency").style.display="none";
+	document.querySelector(".volume").style.display="none";
+	document.querySelector(".area").style.display="none";
+}
+function callCurrency()
+{
+	document.querySelector(".weight").style.display="none";
+	document.querySelector(".length").style.display="none";
+	document.querySelector(".temperature").style.display="none";
+	document.querySelector(".currency").style.display="inline-block";
+	document.querySelector(".volume").style.display="none";
+	document.querySelector(".area").style.display="none";
+}
+function callVolume()
+{
+	document.querySelector(".weight").style.display="none";
+	document.querySelector(".length").style.display="none";
+	document.querySelector(".temperature").style.display="none";
+	document.querySelector(".currency").style.display="none";
+	document.querySelector(".volume").style.display="inline-block";
+	document.querySelector(".area").style.display="none";
+}
+function callArea()
+{
+	document.querySelector(".weight").style.display="none";
+	document.querySelector(".length").style.display="none";
+	document.querySelector(".temperature").style.display="none";
+	document.querySelector(".currency").style.display="none";
+	document.querySelector(".volume").style.display="none";
+	document.querySelector(".area").style.display="inline-block";
+}
+function callFromLeftWeight()
+{
+	var valLeft=document.getElementById("inputLeftWeight").value;
+	var valRight=document.getElementById("inputRightWeight");
+	var left=document.getElementById("chooseUnitLeftWeight").value;
+    var right=document.getElementById("chooseUnitRightWeight").value;
+    if(valLeft=="") valRight.value="";
+	else if(left=="kilogram")
+	{
+		if(right=="kilogram")valRight.value=valLeft;
+		else if(right=="gram")valRight.value=valLeft*1000;
+		else if(right=="ounce")valRight.value=valLeft*35.274;
+		else if(right=="pound")valRight.value=valLeft*2.20462;
+		else if(right=="ton")valRight.value=valLeft/1000;
+		else if(right=="quintal")valRight.value=valLeft/100;
+	}
+	else if(left=="gram")
+	{
+		if(right=="kilogram")valRight.value=valLeft/1000;
+		else if(right=="gram")valRight.value=valLeft;
+		else if(right=="ounce")valRight.value=valLeft*0.035274;
+		else if(right=="pound")valRight.value=valLeft*0.00220462;
+		else if(right=="ton")valRight.value=valLeft/1000000;
+		else if(right=="quintal")valRight.value=valLeft/100000;
+	}
+	else if(left=="ounce")
+	{
+		if(right=="kilogram")valRight.value=valLeft/35.274;
+		else if(right=="gram")valRight.value=valLeft/0.035274;
+		else if(right=="ounce")valRight.value=valLeft;
+		else if(right=="pound")valRight.value=valLeft*0.0625;
+		else if(right=="ton")valRight.value=valLeft/35274;
+		else if(right=="quintal")valRight.value=valLeft/3527.4;
+	}
+	else if(left=="pound")
+	{
+		if(right=="kilogram")valRight.value=valLeft/2.20462;
+		else if(right=="gram")valRight.value=valLeft/0.00220462;
+		else if(right=="ounce")valRight.value=valLeft/0.0625;
+		else if(right=="pound")valRight.value=valLeft;
+		else if(right=="ton")valRight.value=valLeft/2204.62;
+		else if(right=="quintal")valRight.value=valLeft/220.462;
+	}
+	else if(left=="ton")
+	{
+		if(right=="kilogram")valRight.value=valLeft*1000;
+		else if(right=="gram")valRight.value=valLeft*1000000;
+		else if(right=="ounce")valRight.value=valLeft*35274;
+		else if(right=="pound")valRight.value=valLeft*2204.62;
+		else if(right=="ton")valRight.value=valLeft;
+		else if(right=="quintal")valRight.value=valLeft*10;
+	}
+	else
+	{
+		if(right=="kilogram")valRight.value=valLeft*100;
+		else if(right=="gram")valRight.value=valLeft*100000;
+		else if(right=="ounce")valRight.value=valLeft*3527.4;
+		else if(right=="pound")valRight.value=valLeft*220.462;
+		else if(right=="ton")valRight.value=valLeft/10;
+		else if(right=="quintal")valRight.value=valLeft;
+	}
+}
+function callFromRightWeight()
+{
+	var valLeft=document.getElementById("inputLeftWeight");
+	var valRight=document.getElementById("inputRightWeight").value;
+	var left=document.getElementById("chooseUnitLeftWeight").value;
+    var right=document.getElementById("chooseUnitRightWeight").value;
+    if(valRight=="") valLeft.value="";
+	else if(right=="kilogram")
+	{
+		if(left=="kilogram")valLeft.value=valRight;
+		else if(left=="gram")valLeft.value=valRight*1000;
+		else if(left=="ounce")valLeft.value=valRight*35.274;
+		else if(left=="pound")valLeft.value=valRight*2.20462;
+		else if(left=="ton")valLeft.value=valRight/1000;
+		else if(left=="quintal")valLeft.value=valRight/100;
+	}
+	else if(right=="gram")
+	{
+		if(left=="kilogram")valLeft.value=valRight/1000;
+		else if(left=="gram")valLeft.value=valRight;
+		else if(left=="ounce")valLeft.value=valRight*0.035274;
+		else if(left=="pound")valLeft.value=valRight*0.00220462;
+		else if(left=="ton")valLeft.value=valRight/1000000;
+		else if(left=="quintal")valLeft.value=valRight/100000;
+	}
+	else if(right=="ounce")
+	{
+		if(left=="kilogram")valLeft.value=valRight/35.274;
+		else if(left=="gram")valLeft.value=valRight/0.035274;
+		else if(left=="ounce")valLeft.value=valRight;
+		else if(left=="pound")valLeft.value=valRight*0.0625;
+		else if(left=="ton")valLeft.value=valRight/35274;
+		else if(left=="quintal")valLeft.value=valRight/3527.4;
+	}
+	else if(right=="pound")
+	{
+		if(left=="kilogram")valLeft.value=valRight/2.20462;
+		else if(left=="gram")valLeft.value=valRight/0.00220462;
+		else if(left=="ounce")valLeft.value=valRight/0.0625;
+		else if(left=="pound")valLeft.value=valRight;
+		else if(left=="ton")valLeft.value=valRight/2204.62;
+		else if(left=="quintal")valLeft.value=valRight/220.462;
+	}
+	else if(right=="ton")
+	{
+		if(left=="kilogram")valLeft.value=valRight*1000;
+		else if(left=="gram")valLeft.value=valRight*1000000;
+		else if(left=="ounce")valLeft.value=valRight*35274;
+		else if(left=="pound")valLeft.value=valRight*2204.62;
+		else if(left=="ton")valLeft.value=valRight;
+		else if(left=="quintal")valLeft.value=valRight*10;
+	}
+	else
+	{
+		if(left=="kilogram")valLeft.value=valRight*100;
+		else if(left=="gram")valLeft.value=valRight*100000;
+		else if(left=="ounce")valLeft.value=valRight*3527.4;
+		else if(left=="pound")valLeft.value=valRight*220.462;
+		else if(left=="ton")valLeft.value=valRight/10;
+		else if(left=="quintal")valLeft.value=valRight;
+	}
+}
+function callFromLeftLength()
+{
+	var valLeft=document.getElementById("inputLeftLength").value;
+	var valRight=document.getElementById("inputRightLength");
+	var left=document.getElementById("chooseUnitLeftLength").value;
+    var right=document.getElementById("chooseUnitRightLength").value;
+    if(valLeft=="") valRight.value="";
+	else if(left=="meter")
+	{
+		if(right=="meter")valRight.value=valLeft;
+		else if(right=="kilometer")valRight.value=valLeft*0.001;
+		else if(right=="mile")valRight.value=valLeft*0.000621;
+		else if(right=="inch")valRight.value=valLeft*39.37079;
+		else if(right=="yard")valRight.value=valLeft*1.094;
+		else if(right=="feet")valRight.value=valLeft*3.28084;
+	}
+	else if(left=="kilometer")
+	{
+		if(right=="meter")valRight.value=valLeft*1000;
+		else if(right=="kilometer")valRight.value=valLeft;
+		else if(right=="mile")valRight.value=valLeft*0.621;
+		else if(right=="inch")valRight.value=valLeft*39370.079;
+		else if(right=="yard")valRight.value=valLeft*1093.613;
+		else if(right=="feet")valRight.value=valLeft*3280.84;
+	}
+	else if(left=="mile")
+	{
+		if(right=="meter")valRight.value=valLeft*1609.344;
+		else if(right=="kilometer")valRight.value=valLeft*1.609;
+		else if(right=="mile")valRight.value=valLeft;
+		else if(right=="inch")valRight.value=valLeft*63360;
+		else if(right=="yard")valRight.value=valLeft*1760;
+		else if(right=="feet")valRight.value=valLeft*5280;
+	}
+	else if(left=="inch")
+	{
+		if(right=="meter")valRight.value=valLeft*0.0254;
+		else if(right=="kilometer")valRight.value=valLeft*0.0000254;
+		else if(right=="mile")valRight.value=valLeft*0.00001578;
+		else if(right=="inch")valRight.value=valLeft;
+		else if(right=="yard")valRight.value=valLeft*0.0278;
+		else if(right=="feet")valRight.value=valLeft*0.0833;
+	}
+	else if(left=="yard")
+	{
+		if(right=="meter")valRight.value=valLeft*0.914;
+		else if(right=="kilometer")valRight.value=valLeft*0.000914;
+		else if(right=="mile")valRight.value=valLeft*0.000568;
+		else if(right=="inch")valRight.value=valLeft*36;
+		else if(right=="yard")valRight.value=valLeft;
+		else if(right=="feet")valRight.value=valLeft*3;
+	}
+	else
+	{
+		if(right=="meter")valRight.value=valLeft*0.305;
+		else if(right=="kilometre")valRight.value=valLeft*0.000305;
+		else if(right=="mile")valRight.value=valLeft*0.000189394;
+		else if(right=="inch")valRight.value=valLeft*12;
+		else if(right=="yard")valRight.value=valLeft*0.333;
+		else if(right=="feet")valRight.value=valLeft;
+	}
+}
+function callFromRightLength()
+{
+	var valLeft=document.getElementById("inputLeftLength");
+	var valRight=document.getElementById("inputRightLength").value;
+	var left=document.getElementById("chooseUnitLeftLength").value;
+    var right=document.getElementById("chooseUnitRightLength").value;
+    if(valRight=="") valLeft.value="";
+	else if(right=="meter")
+	{
+		if(left=="meter")valLeft.value=valRight;
+		else if(left=="kilometer")valLeft.value=valRight*0.001;
+		else if(left=="mile")valLeft.value=valRight*0.000621;
+		else if(left=="inch")valLeft.value=valRight*39.37079;
+		else if(left=="yard")valLeft.value=valRight*1.094;
+		else if(left=="feet")valLeft.value=valRight*3.28084;
+	}
+	else if(right=="kilometer")
+	{
+		if(left=="meter")valLeft.value=valRight*1000;
+		else if(left=="kilometer")valLeft.value=valRight;
+		else if(left=="mile")valLeft.value=valRight*0.621;
+		else if(left=="inch")valLeft.value=valRight*39370.079;
+		else if(left=="yard")valLeft.value=valRight*1093.613;
+		else if(left=="feet")valLeft.value=valRight*3280.84;
+	}
+	else if(right=="mile")
+	{
+		if(left=="meter")valLeft.value=valRight*1609.344;
+		else if(left=="kilometer")valLeft.value=valRight*1.609;
+		else if(left=="mile")valLeft.value=valRight;
+		else if(left=="inch")valLeft.value=valRight*63360;
+		else if(left=="yard")valLeft.value=valRight*1760;
+		else if(left=="feet")valLeft.value=valRight*5280;
+	}
+	else if(right=="inch")
+	{
+		if(left=="meter")valLeft.value=valRight*0.0254;
+		else if(left=="kilometer")valLeft.value=valRight*0.0000254;
+		else if(left=="mile")valLeft.value=valRight*0.00001578;
+		else if(left=="inch")valLeft.value=valRight;
+		else if(left=="yard")valLeft.value=valRight*0.0278;
+		else if(left=="feet")valLeft.value=valRight*0.0833;
+	}
+	else if(right=="yard")
+	{
+		if(left=="meter")valLeft.value=valRight*0.914;
+		else if(left=="kilometer")valLeft.value=valRight*0.000914;
+		else if(left=="mile")valLeft.value=valRight*0.000568;
+		else if(left=="inch")valLeft.value=valRight*36;
+		else if(left=="yard")valLeft.value=valRight;
+		else if(left=="feet")valLeft.value=valRight*3;
+	}
+	else
+	{
+		if(left=="meter")valLeft.value=valRight*0.305;
+		else if(left=="kilometer")valLeft.value=valRight*0.000305;
+		else if(left=="mile")valLeft.value=valRight*0.000189394;
+		else if(left=="inch")valLeft.value=valRight*12;
+		else if(left=="yard")valLeft.value=valRight*0.333;
+		else if(left=="feet")valLeft.value=valRight;
+	}
+}
+function callFromLeftTemperature()
+{
+	var valLeft=document.getElementById("inputLeftTemperature").value;
+	var valRight=document.getElementById("inputRightTemperature");
+	var left=document.getElementById("chooseUnitLeftTemperature").value;
+    var right=document.getElementById("chooseUnitRightTemperature").value;
+    if(valLeft=="") valRight.value="";
+	else if(left=="celcius")
+	{
+		if(right=="celcius")valRight.value=valLeft;
+		else if(right=="fahrenheit")valRight.value=(valLeft*1.8)+32;
+		else if(right=="kelvin")valRight.value=valLeft+273.15;
+	}
+	else if(left=="fahrenheit")
+	{
+		if(right=="celcius")valRight.value=(valLeft-32)/1.8;
+		else if(right=="fahrenheit")valRight.value=valLeft;
+		else if(right=="kelvin")valRight.value=(valLeft+459.67)/1.8;
+	}
+	else
+	{
+		if(right=="celcius")valRight.value=valLeft-273.15;
+		else if(right=="fahrenheit")valRight.value=(valLeft*1.8)-459.67;
+		else if(right=="kelvin")valRight.value=valLeft;
+	}
+}
+function callFromRightTemperature()
+{
+	var valLeft=document.getElementById("inputLeftTemperature");
+	var valRight=document.getElementById("inputRightTemperature").value;
+	var left=document.getElementById("chooseUnitLeftTemperature").value;
+    var right=document.getElementById("chooseUnitRightTemperature").value;
+    if(valRight=="") valLeft.value="";
+	else if(right=="celcius")
+	{
+		if(left=="celcius")valLeft.value=valRight;
+		else if(left=="fahrenheit")valLeft.value=valRight*1000;
+		else if(left=="kelvin")valLeft.value=valRight*35.274;
+	}
+	else if(right=="fahrenheit")
+	{
+		if(left=="celcius")valLeft.value=valRight;
+		else if(left=="fahrenheit")valLeft.value=valRight*1000;
+		else if(left=="kelvin")valLeft.value=valRight*35.274;
+	}
+	else
+	{
+		if(left=="celcius")valLeft.value=valRight;
+		else if(left=="fahrenheit")valLeft.value=valRight*1000;
+		else if(left=="kelvin")valLeft.value=valRight*35.274;
+	}
+}
+function callFromLeftCurrency()
+{
+	var valLeft=document.getElementById("inputLeftCurrency").value;
+	var valRight=document.getElementById("inputRightCurrency");
+	var left=document.getElementById("chooseUnitLeftCurrency").value;
+    var right=document.getElementById("chooseUnitRightCurrency").value;
+    if(valLeft=="") valRight.value="";
+	else if(left=="rupee")
+	{
+		if(right=="rupee")valRight.value=valLeft;
+		else if(right=="usd")valRight.value=valLeft/(<%= rates[obj.rupee] %>)*(<%= rates[obj.usd] %>);
+		else if(right=="pound")valRight.value=valLeft/(<%= rates[obj.rupee] %>)*(<%= rates[obj.pound]%>);
+		else if(right=="euro")valRight.value=valLeft/(<%= rates[obj.rupee] %>)*(<%= rates[obj.euro] %>);
+		else if(right=="yen")valRight.value=valLeft/(<%= rates[obj.rupee] %>)*(<%= rates[obj.yen] %>);
+		else if(right=="riyal")valRight.value=valLeft/(<%= rates[obj.rupee] %>)*(<%= rates[obj.riyal] %>);
+	}
+	else if(left=="usd")
+	{
+		if(right=="rupee")valRight.value=valLeft/(<%= rates[obj.usd] %>)*(<%= rates[obj.rupee] %>);
+		else if(right=="usd")valRight.value=valLeft;
+		else if(right=="pound")valRight.value=valLeft/(<%= rates[obj.usd] %>)*(<%= rates[obj.rupee] %>);
+		else if(right=="euro")valRight.value=valLeft/(<%= rates[obj.usd] %>)*(<%= rates[obj.rupee] %>);
+		else if(right=="yen")valRight.value=valLeft/(<%= rates[obj.usd] %>)*(<%= rates[obj.yen] %>);
+		else if(right=="riyal")valRight.value=valLeft/(<%= rates[obj.usd] %>)*(<%= rates[obj.riyal] %>);
+	}
+	else if(left=="pound")
+	{
+		if(right=="rupee")valRight.value=valLeft/(<%= rates[obj.pound] %>)*(<%= rates[obj.rupee] %>);
+		else if(right=="usd")valRight.value=valLeft/(<%= rates[obj.pound] %>)*(<%= rates[obj.usd] %>);
+		else if(right=="pound")valRight.value=valLeft;
+		else if(right=="euro")valRight.value=valLeft/(<%= rates[obj.pound] %>)*(<%= rates[obj.euro] %>);
+		else if(right=="yen")valRight.value=valLeft/(<%= rates[obj.pound] %>)*(<%= rates[obj.yen] %>);
+		else if(right=="riyal")valRight.value=valLeft/(<%= rates[obj.pound] %>)*(<%= rates[obj.riyal] %>);
+	}
+	else if(left=="euro")
+	{
+		if(right=="rupee")valRight.value=valLeft*(<%= rates[obj.rupee] %>);
+		else if(right=="usd")valRight.value=valLeft*(<%= rates[obj.usd] %>);
+		else if(right=="pound")valRight.value=valLeft*(<%= rates[obj.pound] %>);
+		else if(right=="euro")valRight.value=valLeft;
+		else if(right=="yen")valRight.value=valLeft*(<%= rates[obj.yen] %>);
+		else if(right=="riyal")valRight.value=valLeft*(<%= rates[obj.riyal] %>);
+	}
+	else if(left=="yen")
+	{
+		if(right=="rupee")valRight.value=valLeft/(<%= rates[obj.yen] %>)*(<%= rates[obj.rupee] %>);
+		else if(right=="usd")valRight.value=valLeft/(<%= rates[obj.yen] %>)*(<%= rates[obj.usd] %>);
+		else if(right=="pound")valRight.value=valLeft/(<%= rates[obj.yen] %>)*(<%= rates[obj.pound] %>);
+		else if(right=="euro")valRight.value=valLeft/(<%= rates[obj.yen] %>)*(<%= rates[obj.euro] %>);
+		else if(right=="yen")valRight.value=valLeft;
+		else if(right=="riyal")valRight.value=valLeft/(<%= rates[obj.yen] %>)*(<%= rates[obj.riyal] %>);
+	}
+	else
+	{
+		if(right=="rupee")valRight.value=valLeft/(<%= rates[obj.riyal] %>)*(<%= rates[obj.rupee] %>);
+		else if(right=="usd")valRight.value=valLeft/(<%= rates[obj.riyal] %>)*(<%= rates[obj.usd] %>);
+		else if(right=="pound")valRight.value=valLeft/(<%= rates[obj.riyal] %>)*(<%= rates[obj.pound] %>);
+		else if(right=="euro")valRight.value=valLeft/(<%= rates[obj.riyal] %>)*(<%= rates[obj.euro] %>);
+		else if(right=="yen")valRight.value=valLeft/(<%= rates[obj.riyal] %>)*(<%= rates[obj.yen] %>);
+		else if(right=="riyal")valRight.value=valLeft;
+	}
+}
+function callFromRightCurrency()
+{
+	var valLeft=document.getElementById("inputLeftCurrency");
+	var valRight=document.getElementById("inputRightCurrency").value;
+	var left=document.getElementById("chooseUnitLeftCurrency").value;
+    var right=document.getElementById("chooseUnitRightCurrency").value;
+    if(valRight=="") valLeft.value="";
+	else if(right=="rupee")
+	{
+		if(left=="rupee")valLeft.value=valRight;
+		else if(left=="usd")valLeft.value=valRight/(<%= rates[obj.rupee] %>)*(<%= rates[obj.usd] %>);
+		else if(left=="pound")valLeft.value=valRight/(<%= rates[obj.rupee] %>)*(<%= rates[obj.pound] %>);
+		else if(left=="euro")valLeft.value=valRight/(<%= rates[obj.rupee] %>)*(<%= rates[obj.euro] %>);
+		else if(left=="yen")valLeft.value=valRight/(<%= rates[obj.rupee] %>)*(<%= rates[obj.yen] %>);
+		else if(left=="riyal")valLeft.value=valRight/(<%= rates[obj.rupee] %>)*(<%= rates[obj.riyal] %>);
+	}
+	else if(right=="usd")
+	{
+		if(left=="rupee")valLeft.value=valRight/(<%= rates[obj.usd] %>)*(<%= rates[obj.rupee] %>);
+		else if(left=="usd")valLeft.value=valRight;
+		else if(left=="pound")valLeft.value=valRight/(<%= rates[obj.usd] %>)*(<%= rates[obj.pound] %>);
+		else if(left=="euro")valLeft.value=valRight/(<%= rates[obj.usd] %>)*(<%= rates[obj.euro] %>);
+		else if(left=="yen")valLeft.value=valRight/(<%= rates[obj.usd] %>)*(<%= rates[obj.yen] %>);
+		else if(left=="riyal")valLeft.value=valRight/(<%= rates[obj.usd] %>)*(<%= rates[obj.riyal] %>);
+	}
+	else if(right=="pound")
+	{
+		if(left=="rupee")valLeft.value=valRight/(<%= rates[obj.pound] %>)*(<%= rates[obj.rupee] %>);
+		else if(left=="usd")valLeft.value=valRight/(<%= rates[obj.pound] %>)*(<%= rates[obj.usd] %>);
+		else if(left=="pound")valLeft.value=valRight;
+		else if(left=="euro")valLeft.value=valRight/(<%= rates[obj.pound] %>)*(<%= rates[obj.euro] %>);
+		else if(left=="yen")valLeft.value=valRight/(<%= rates[obj.pound] %>)*(<%= rates[obj.yen] %>);
+		else if(left=="riyal")valLeft.value=valRight/(<%= rates[obj.pound] %>)*(<%= rates[obj.riyal] %>);
+	}
+	else if(right=="euro")
+	{
+		if(left=="rupee")valLeft.value=valRight*(<%= rates[obj.rupee] %>);
+		else if(left=="usd")valLeft.value=valRight*(<%= rates[obj.usd] %>);
+		else if(left=="pound")valLeft.value=valRight*(<%= rates[obj.pound] %>);
+		else if(left=="euro")valLeft.value=valRight;
+		else if(left=="yen")valLeft.value=valRight*(<%= rates[obj.yen] %>);
+		else if(left=="riyal")valLeft.value=valRight*(<%= rates[obj.riyal] %>);
+	}
+	else if(right=="yen")
+	{
+		if(left=="rupee")valLeft.value=valRight/(<%= rates[obj.yen] %>)*(<%= rates[obj.rupee] %>);
+		else if(left=="usd")valLeft.value=valRight/(<%= rates[obj.yen] %>)*(<%= rates[obj.usd] %>);
+		else if(left=="pound")valLeft.value=valRight/(<%= rates[obj.yen] %>)*(<%= rates[obj.pound] %>);
+		else if(left=="euro")valLeft.value=valRight/(<%= rates[obj.yen] %>)*(<%= rates[obj.euro] %>);
+		else if(left=="yen")valLeft.value=valRight;
+		else if(left=="riyal")valLeft.value=valRight/(<%= rates[obj.yen] %>)*(<%= rates[obj.riyal] %>);
+	}
+	else
+	{
+		if(left=="rupee")valLeft.value=valRight/(<%= rates[obj.riyal] %>)*(<%= rates[obj.rupee] %>);
+		else if(left=="usd")valLeft.value=valRight/(<%= rates[obj.riyal] %>)*(<%= rates[obj.usd] %>);
+		else if(left=="pound")valLeft.value=valRight/(<%= rates[obj.riyal] %>)*(<%= rates[obj.pound] %>);
+		else if(left=="euro")valLeft.value=valRight/(<%= rates[obj.riyal] %>)*(<%= rates[obj.euro] %>);
+		else if(left=="yen")valLeft.value=valRight/(<%= rates[obj.riyal] %>)*(<%= rates[obj.yen] %>);
+		else if(left=="riyal")valLeft.value=valRight;
+	}
+}
+function callFromLeftVolume()
+{
+	var valLeft=document.getElementById("inputLeftVolume").value;
+	var valRight=document.getElementById("inputRightVolume");
+	var left=document.getElementById("chooseUnitLeftVolume").value;
+    var right=document.getElementById("chooseUnitRightVolume").value;
+    if(valLeft=="") valRight.value="";
+	else if(left=="litre")
+	{
+		if(right=="litre")valRight.value=valLeft;
+		else if(right=="cubicfeet")valRight.value=valLeft*0.0353147;
+		else if(right=="cubicmeter")valRight.value=valLeft*0.001;
+		else if(right=="gallon")valRight.value=valLeft*0.264172;
+		else if(right=="barrel")valRight.value=valLeft*0.0062898108;
+		else if(right=="pint")valRight.value=valLeft*2.11338;
+	}
+	else if(left=="cubicfeet")
+	{
+		if(right=="litre")valRight.value=valLeft/0.0353147;
+		else if(right=="cubicfeet")valRight.value=valLeft;
+		else if(right=="cubicmeter")valRight.value=valLeft*0.0283168;
+		else if(right=="gallon")valRight.value=valLeft*7.48052;
+		else if(right=="barrel")valRight.value=valLeft*0.17811;
+		else if(right=="pint")valRight.value=valLeft*59.844;
+	}
+	else if(left=="cubicmeter")
+	{
+		if(right=="litre")valRight.value=valLeft/0.001;
+		else if(right=="cubicfeet")valRight.value=valLeft/0.0283168;
+		else if(right=="cubicmeter")valRight.value=valLeft;
+		else if(right=="gallon")valRight.value=valLeft*264.172;
+		else if(right=="barrel")valRight.value=valLeft*6.2898;
+		else if(right=="pint")valRight.value=valLeft*2113.38;
+	}
+	else if(left=="gallon")
+	{
+		if(right=="litre")valRight.value=valLeft/0.264172;
+		else if(right=="cubicfeet")valRight.value=valLeft/0.17811;
+		else if(right=="cubicmeter")valRight.value=valLeft/264.172;
+		else if(right=="gallon")valRight.value=valLeft;
+		else if(right=="barrel")valRight.value=valLeft*0.023810;
+		else if(right=="pint")valRight.value=valLeft*8;
+	}
+	else if(left=="barrel")
+	{
+		if(right=="litre")valRight.value=valLeft/0.0062898108;
+		else if(right=="cubicfeet")valRight.value=valLeft*1000;
+		else if(right=="cubicmeter")valRight.value=valLeft/6.2898;
+		else if(right=="gallon")valRight.value=valLeft/0.023810;
+		else if(right=="barrel")valRight.value=valLeft;
+		else if(right=="pint")valRight.value=valLeft*336;
+	}
+	else
+	{
+		if(right=="litre")valRight.value=valLeft/2.11338;
+		else if(right=="cubicfeet")valRight.value=valLeft/59.844;
+		else if(right=="cubicmeter")valRight.value=valLeft/2113.38;
+		else if(right=="gallon")valRight.value=valLeft/8;
+		else if(right=="barrel")valRight.value=valLeft/336;
+		else if(right=="pint")valRight.value=valLeft;
+	}
+}
+function callFromRightVolume()
+{
+	var valLeft=document.getElementById("inputLeftVolume");
+	var valRight=document.getElementById("inputRightVolume").value;
+	var left=document.getElementById("chooseUnitLeftVolume").value;
+    var right=document.getElementById("chooseUnitRightVolume").value;
+    if(valRight=="") valLeft.value="";
+	else if(right=="litre")
+	{
+		if(left=="litre")valLeft.value=valRight;
+		else if(left=="cubicfeet")valLeft.value=valRight*0.0353147;
+		else if(left=="cubicmeter")valLeft.value=valRight*0.001;
+		else if(left=="gallon")valLeft.value=valRight*0.264172;
+		else if(left=="barrel")valLeft.value=valRight*0.0062898108;
+		else if(left=="pint")valLeft.value=valRight*2.11338;
+	}
+	else if(right=="cubicfeet")
+	{
+		if(left=="litre")valLeft.value=valRight/0.0353147;
+		else if(left=="cubicfeet")valLeft.value=valRight;
+		else if(left=="cubicmeter")valLeft.value=valRight*0.0283168;
+		else if(left=="gallon")valLeft.value=valRight*7.48052;
+		else if(left=="barrel")valLeft.value=valRight*0.17811;
+		else if(left=="pint")valLeft.value=valRight*59.844;
+	}
+	else if(right=="cubicmeter")
+	{
+		if(left=="litre")valLeft.value=valRight/0.001;
+		else if(left=="cubicfeet")valLeft.value=valRight/0.0283168;
+		else if(left=="cubicmeter")valLeft.value=valRight;
+		else if(left=="gallon")valLeft.value=valRight*264.172;
+		else if(left=="barrel")valLeft.value=valRight*6.2898;
+		else if(left=="pint")valLeft.value=valRight*2113.38;
+	}
+	else if(right=="gallon")
+	{
+		if(left=="litre")valLeft.value=valRight/0.264172;
+		else if(left=="cubicfeet")valLeft.value=valRight/0.17811;
+		else if(left=="cubicmeter")valLeft.value=valRight/264.172;
+		else if(left=="gallon")valLeft.value=valRight;
+		else if(left=="barrel")valLeft.value=valRight*0.023810;
+		else if(left=="pint")valLeft.value=valRight*8;
+	}
+	else if(right=="barrel")
+	{
+		if(left=="litre")valLeft.value=valRight/0.0062898108;
+		else if(left=="cubicfeet")valLeft.value=valRight*1000;
+		else if(left=="cubicmeter")valLeft.value=valRight/6.2898;
+		else if(left=="gallon")valLeft.value=valRight/0.023810;
+		else if(left=="barrel")valLeft.value=valRight;
+		else if(left=="pint")valLeft.value=valRight*336;
+	}
+	else
+	{
+		if(left=="litre")valLeft.value=valRight/2.11338;
+		else if(left=="cubicfeet")valLeft.value=valRight/59.844;
+		else if(left=="cubicmeter")valLeft.value=valRight/2113.38;
+		else if(left=="gallon")valLeft.value=valRight/8;
+		else if(left=="barrel")valLeft.value=valRight/336;
+		else if(left=="pint")valLeft.value=valRight;
+	}
+}
+function callFromLeftArea()
+{
+	var valLeft=document.getElementById("inputLeftArea").value;
+	var valRight=document.getElementById("inputRightArea");
+	var left=document.getElementById("chooseUnitLeftArea").value;
+    var right=document.getElementById("chooseUnitRightArea").value;
+    if(valLeft=="") valRight.value="";
+	else if(left=="sqmeter")
+	{
+		if(right=="sqmeter")valRight.value=valLeft;
+		else if(right=="sqkilometer")valRight.value=valLeft*0.000001;
+		else if(right=="acre")valRight.value=valLeft*0.000247105;
+		else if(right=="hectare")valRight.value=valLeft*0.0001;
+		else if(right=="sqyard")valRight.value=valLeft*1.196;
+		else if(right=="sqfeet")valRight.value=valLeft*10.7639;
+	}
+	else if(left=="sqkilometer")
+	{
+		if(right=="sqmeter")valRight.value=valLeft*1000000;
+		else if(right=="sqkilometer")valRight.value=valLeft;
+		else if(right=="acre")valRight.value=valLeft*247.105;
+		else if(right=="hectare")valRight.value=valLeft*100;
+		else if(right=="sqyard")valRight.value=valLeft*1196000;
+		else if(right=="sqfeet")valRight.value=valLeft*10760000;
+	}
+	else if(left=="acre")
+	{
+		if(right=="sqmeter")valRight.value=valLeft*4046.86;
+		else if(right=="sqkilometer")valRight.value=valLeft*0.00404686;
+		else if(right=="acre")valRight.value=valLeft;
+		else if(right=="hectare")valRight.value=valLeft*0.404686;
+		else if(right=="sqyard")valRight.value=valLeft*4840;
+		else if(right=="sqfeet")valRight.value=valLeft*43560;
+	}
+	else if(left=="hectare")
+	{
+		if(right=="sqmeter")valRight.value=valLeft*10000;
+		else if(right=="sqkilometer")valRight.value=valLeft*0.01;
+		else if(right=="acre")valRight.value=valLeft*2.47105;
+		else if(right=="hectare")valRight.value=valLeft;
+		else if(right=="sqyard")valRight.value=valLeft*11959.9;
+		else if(right=="sqfeet")valRight.value=valLeft*107639;
+	}
+	else if(left=="sqyard")
+	{
+		if(right=="sqmeter")valRight.value=valLeft*0.836127;
+		else if(right=="sqkilometer")valRight.value=valLeft*0.00000083613;
+		else if(right=="acre")valRight.value=valLeft*0.000206612;
+		else if(right=="hectare")valRight.value=valLeft*0.000083613;
+		else if(right=="sqyard")valRight.value=valLeft;
+		else if(right=="sqfeet")valRight.value=valLeft*9;
+	}
+	else
+	{
+		if(right=="sqmeter")valRight.value=valLeft*0.092903;
+		else if(right=="sqkilometer")valRight.value=valLeft*0.000000092903;
+		else if(right=="acre")valRight.value=valLeft*0.000022957;
+		else if(right=="hectare")valRight.value=valLeft*0.0000092903;
+		else if(right=="sqyard")valRight.value=valLeft*0.11111;
+		else if(right=="sqfeet")valRight.value=valLeft;
+	}
+}
+function callFromRightArea()
+{
+	var valLeft=document.getElementById("inputLeftArea");
+	var valRight=document.getElementById("inputRightArea").value;
+	var left=document.getElementById("chooseUnitLeftArea").value;
+    var right=document.getElementById("chooseUnitRightArea").value;
+    if(valRight=="") valLeft.value="";
+	else if(right=="sqmeter")
+	{
+		if(left=="sqmeter")valLeft.value=valRight;
+		else if(left=="sqkilometer")valLeft.value=valRight*0.000001;
+		else if(left=="acre")valLeft.value=valRight*0.000247105;
+		else if(left=="hectare")valLeft.value=valRight*0.0001;
+		else if(left=="sqyard")valLeft.value=valRight*1.196;
+		else if(left=="sqfeet")valLeft.value=valRight*10.7639;
+	}
+	else if(right=="sqkilometer")
+	{
+		if(left=="sqmeter")valLeft.value=valRight*1000000;
+		else if(left=="sqkilometer")valLeft.value=valRight;
+		else if(left=="acre")valLeft.value=valRight*247.105;
+		else if(left=="hectare")valLeft.value=valRight*100;
+		else if(left=="sqyard")valLeft.value=valRight*1196000;
+		else if(left=="sqfeet")valLeft.value=valRight*10760000;
+	}
+	else if(right=="acre")
+	{
+		if(left=="sqmeter")valLeft.value=valRight*4046.86;
+		else if(left=="sqkilometer")valLeft.value=valRight*0.00404686;
+		else if(left=="acre")valLeft.value=valRight;
+		else if(left=="hectare")valLeft.value=valRight*0.0404686;
+		else if(left=="sqyard")valLeft.value=valRight*4840;
+		else if(left=="sqfeet")valLeft.value=valRight*43560;
+	}
+	else if(right=="hectare")
+	{
+		if(left=="sqmeter")valLeft.value=valRight*10000;
+		else if(left=="sqkilometer")valLeft.value=valRight*0.01;
+		else if(left=="acre")valLeft.value=valRight*2.47105;
+		else if(left=="hectare")valLeft.value=valRight;
+		else if(left=="sqyard")valLeft.value=valRight*11959.9;
+		else if(left=="sqfeet")valLeft.value=valRight*107639;
+	}
+	else if(right=="sqyard")
+	{
+		if(left=="sqmeter")valLeft.value=valRight*0.836127;
+		else if(left=="sqkilometer")valLeft.value=valRight*0.00000083613;
+		else if(left=="acre")valLeft.value=valRight*0.000206612;
+		else if(left=="hectare")valLeft.value=valRight*0.000083613;
+		else if(left=="sqyard")valLeft.value=valRight;
+		else if(left=="sqfeet")valLeft.value=valRight*9;
+	}
+	else
+	{
+		if(left=="sqmeter")valLeft.value=valRight*0.092903;
+		else if(left=="sqkilometer")valLeft.value=valRight*0.000000092903;
+		else if(left=="acre")valLeft.value=valRight*0.000022957;
+		else if(left=="hectare")valLeft.value=valRight*0.0000092903;
+		else if(left=="sqyard")valLeft.value=valRight*0.11111;
+		else if(left=="sqfeet")valLeft.value=valRight;
+	}
+}
+</script>
+</body>
+</html>			
