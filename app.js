@@ -1,8 +1,9 @@
-var express =require("express");
-var app=express();
-var request=require("request");
-app.get("/",function(req,res){
-    var url="http://data.fixer.io/api/latest?access_key=f64f065eec7c9d5ad12ed9cc3669f1cf";
+const express =require("express"),
+    app=express(),
+    request=require("request");
+
+app.get("/",(req,res)=>{
+    var url="http://data.fixer.io/api/latest?access_key=${process.env.apiKey}";
     request(url,(error,response,body)=>{
         var obj={"rupee":"INR","usd":"USD","pound":"GBP","euro":"EUR","yen":"JPY","riyal":"SAR"};
         var data=JSON.parse(body);
@@ -11,7 +12,6 @@ app.get("/",function(req,res){
     
 });
 
-
-app.listen(3000,function(){
+app.listen(3000,()=>{
     console.log("Listening to the server");
 });
